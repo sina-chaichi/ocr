@@ -1,5 +1,5 @@
 """
-WSGI config for ocr project.
+WSGI config for learning_users project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

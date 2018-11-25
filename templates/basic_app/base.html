@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  </head>
+  <body>
+    <nav class='navbar navbar-default navbar-static-top'>
+      <div class="container">
+        <ul class='nav navbar-nav'>
+          <li><a class="navdar-brand" href="{% url 'index' %}">Home</a></li>
+          <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
+          <li><a class="navbar-link" href="{% url 'basic_app:register' %}">Sign Up</a></li>
+
+
+          {% if user.is_authenticated %}
+            <li><a class="navbar-link" href="{% url 'logout' %}">Sign Out</a></li>
+          {% else %}
+            <li><a class="navbar-link" href="{% url 'basic_app:user_login' %}">Sign In</a></li>
+          {% endif %}
+
+
+
+
+
+
+
+
+        </ul>
+
+      </div>
+
+    </nav>
+
+    <div class="navbar-footer">
+      <a href="gmail.google.com" class="active">Contact me</a>
+      <a href="#news">News</a>
+      <a href="#options">Options</a>
+    </div>
+
+
+    <div class="container">
+      {% block body-block %}
+      {% endblock %}
+
+    </div>
+
+
+           <style>
+
+            .navbar-footer {
+              background-color: #c7d5ed;
+              overflow: hidden;
+              position: fixed;
+              bottom: 0;
+              width: 100%;
+              }
+
+            .navbar-footer a {
+              float: left;
+              display: block;
+              color: #1b2a42;
+              text-align: center;
+              padding: 20px 40px;
+              text-decoration: none;
+              font-size: 15px;
+              }
+
+            <style>
+
+  </body>
+</html>
