@@ -20,6 +20,7 @@
           {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Sign out</a></li>
+            <li><a href="{% url 'users:model_form_upload' %}">Upload Image</a></li>
           {% else %}
             <li><a class="navbar-link" href="{% url 'users:user_login' %}">Sign in</a></li>
           {% endif %}

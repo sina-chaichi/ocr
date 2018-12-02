@@ -1,0 +1,17 @@
+{% extends "homepage/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+      <h2>Upload your image to process:</h2>
+
+        <form enctype="multipart/form-data" method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input type="submit" name="" value="Upload">
+        </form>
+    </div>
+  </div>
+
+{% endblock %}
