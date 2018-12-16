@@ -1,0 +1,4 @@
+*.pyc
+*.jpeg
+*.png
+./website/media/uploaded

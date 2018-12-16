@@ -4,13 +4,16 @@
 {% block body_block %}
   <div class="container">
     <div class="jumbotron">
-      <h2>Upload your image to process:</h2>
-
+      {% if upload_check %}
+        <h1>Your image was uploaded succesfully </h1>
+      {% else %}
+        <h1>Upload your image to process:</h1>
         <form enctype="multipart/form-data" method="POST">
           {% csrf_token %}
           {{ form.as_p }}
           <input type="submit" name="" value="Upload">
         </form>
+      {% endif %}
     </div>
   </div>
 
