@@ -1,5 +1,5 @@
 *.pyc
-*.jpeg
+*.jpg
 *.png
 ./website/media/uploaded
 ./website/media/processed
