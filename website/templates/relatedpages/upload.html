@@ -5,13 +5,24 @@
   <div class="container">
     <div class="jumbotron">
       {% if upload_check %}
-        <h1>Your image was uploaded succesfully </h1>
+        <h1>Your Image uploaded successfully</h1>
+        <form class="" action="{% url 'users:process' %}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="" value="Process">
+        </form>
+
+        <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" value="Upload">
+        </form>
+
       {% else %}
         <h1>Upload your image to process:</h1>
         <form enctype="multipart/form-data" method="POST">
-          {% csrf_token %}
-          {{ form.as_p }}
-          <input type="submit" name="" value="Upload">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" name="" value="Upload">
         </form>
       {% endif %}
     </div>

@@ -7,25 +7,15 @@ from orders.forms import DocumentForm
 from django.urls import reverse
 from django.core.files.base import ContentFile
 import uuid
-import io
+import errno
 import os
-from google.cloud import vision
-# from datetime import datetime
-
-
-
-from PIL import Image, ImageFilter
-import sys
-from pyocr import pyocr
-from pyocr import builders
-import pytesseract
-
 
 def model_form_upload(request):
     upload_check = False
     if request.method == 'POST':
+        upload_check = False
         current_user = request.user
-        order_list = Order.objects.filter(user=current_user, is_finished = False).order_by('-id')
+        order_list = Order.objects.filter(user = current_user, is_finished = False).order_by('-id')
         if len(order_list) > 0 :
             order = order_list[0]
         else:
@@ -37,6 +27,7 @@ def model_form_upload(request):
             document.user = current_user
             document.order = order
             document.save()
+            # order.is_finished = True
             upload_check = True
 
         else:
@@ -44,14 +35,6 @@ def model_form_upload(request):
     else:
         form = DocumentForm()
     return render(request, 'relatedpages/upload.html', {
-        'form': form
+        'form': form,
+        'upload_check':upload_check
     })
-
-
-def test(request):
-    image = Image.open('/home/sina/work/ocr/ocr/website/media/uploaded/test.png')
-    image.filter(ImageFilter.SHARPEN)
-    txt = pytesseract.image_to_string(
-    image,
-    lang='eng')
-    return HttpResponse(txt)

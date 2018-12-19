@@ -20,3 +20,8 @@ class Document(models.Model):
     document = models.FileField(upload_to='uploaded/')
     doc_name = models.UUIDField(default=uuid.uuid4, unique=True, max_length=512)
     uploaded_at = models.DateTimeField(default = now)
+
+class Process(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, default=None)
+    order = models.ForeignKey(Order, on_delete=models.CASCADE, default=None)
+    fileUpload = models.FileField(default=None, upload_to='proccessed/')

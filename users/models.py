@@ -1,6 +1,5 @@
 from django.db import models
 from django.contrib.auth.models import User
-
 # Create your models here.
 class UserProfileInfo(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE)
@@ -8,7 +7,3 @@ class UserProfileInfo(models.Model):
     def __str__(self):
         return self.user.username
 
-# class Document(models.Model):
-#     description = models.CharField(max_length=255, blank=True)
-#     document = models.FileField(upload_to='uploaded/')
-#     uploaded_at = models.DateTimeField(auto_now_add=True)

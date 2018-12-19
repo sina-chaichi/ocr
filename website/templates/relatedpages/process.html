@@ -1,0 +1,23 @@
+{% extends "homepage/base.html" %}
+{% block body_block %}
+
+<div class="container">
+  <div class="jumbotron">
+    {% if procces_check %}
+        <h2>{{ user.username }}: your files is processed successfully</h2>
+        <h3>For access to your files click here:</h3>
+        <form action="{% url 'users:show_results' %}" method="post">
+          <input type="submit" name="" value="Download">
+        </form>
+
+    {% else %}
+        <h2>Sorry! We could not process your files</h2>
+        <form action="{% url 'users:process' %}" method="post">
+          <input type="submit" name="" value="Try again">
+        </form>
+
+    {% endif %}
+  </div>
+</div>
+
+{% endblock %}
