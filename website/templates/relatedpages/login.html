@@ -4,19 +4,18 @@
     <div class="jumbotron">
       <h1>Please Sign in</h1>
       <p></p>
-      <p></p>
+      <p><a id = 'home' href="{% url 'index' %}"></a></p>
       <p id = 'message-div'></p>
 
-        <form id = 'signin' method="post" action="{% url 'users:user_login' %}">
+        <form  method="post" action="{% url 'users:user_login' %}">
           {% csrf_token %}
-          {# A more "HTML" way of creating the login form#}
           <label for="email">Email:</label>
           <input id = 'email' type="email" name="email" placeholder="Enter your mail">
 
           <label for="password">Password</label>
           <input id = 'pass' type="password" name="password">
 
-          <input type="submit" name="" value="Sign in">
+          <button type="button" id="signin" name="" value="Sign in">Sign up</button>
 
         </form>
 

@@ -14,7 +14,6 @@
           {# Django Home Link / Admin Link / Register Link#}
           <li><a class="navbar-brand" href="{% url 'index' %}">Home</a></li>
           <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-          <li><a class="navbar-link" href="{% url 'users:register' %}">Sign Up</a></li>
 
           {# Some logic on what to display for last item#}
           {% if user.is_authenticated %}
@@ -22,6 +21,7 @@
             <li><a href="{% url 'users:model_form_upload' %}">Upload Image</a></li>
           {% else %}
             <li><a class="navbar-link" href="{% url 'users:user_login' %}">Sign in</a></li>
+            <li><a class="navbar-link" href="{% url 'users:register' %}">Sign Up</a></li>
           {% endif %}
 
         </ul>

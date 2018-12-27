@@ -1,15 +1,13 @@
 upload ={
 init: function(){
-  alert('Hello');
   upload.eventHandler()
   },
 
   eventHandler: function(){
     $('#process').click(function(){
       upload.processOrder()
-    }),
-  },
-  
+    })},
+
   processOrder: function(){
     $.ajax({
       url: '/users/process/',

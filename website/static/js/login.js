@@ -1,9 +1,6 @@
 login ={
 init: function(){
-  alert('Hello')
-
   function send_login(){
-    console.log("login works!");
     $.ajax({
         url : '/users/user_login/',
         type : 'POST',
@@ -14,15 +11,17 @@ init: function(){
        },
 
      }).done(function(data){
-         console.log(data);
-         if (response_data['status'] == False){
-           $('#message-div').html(data['message']);
+         if (data.status == false){
+           $('#message-div').html(data.message);
+           $('#pass').val('');
+         }else{
+           window.location.replace("http://127.0.0.1:8000");
          }
-     }};
+     });
+  }
 
-  $('#signin').on('submit', function(event){
+  $('#signin').on('click', function(event){
     event.preventDefault();
-    console.log("form submitted!")
     send_login();
 });
 

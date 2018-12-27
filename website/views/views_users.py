@@ -70,8 +70,6 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request,user)
-                response_data['result'] = 'You are Signed in'
-                # return HttpResponseRedirect(reverse('index'))
                 return JsonResponse({
                 'status':True,
                 'message' : 'Wlcome {}'.format(username)})
