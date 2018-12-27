@@ -8,13 +8,14 @@
         <h1>Your Image uploaded successfully</h1>
         <form class="" action="{% url 'users:process' %}" method="post">
         {% csrf_token %}
-        <input type="submit" name="" value="Process">
+        <button id= 'process' type="button" name="button">Next</button>
+
         </form>
 
         <form enctype="multipart/form-data" method="POST">
         {% csrf_token %}
         {{ form.as_p }}
-        <input type="submit" name="" value="Upload">
+        <input id = 'upload' type="submit" name="" value="Upload">
         </form>
 
       {% else %}
@@ -24,8 +25,23 @@
         {{ form.as_p }}
         <input type="submit" name="" value="Upload">
         </form>
+        <div class="container">
+          <h2>See your uploaded images here:</h2>
+          <button id = 'show' type="button" name="button">Show</button>
+
+        </div>
       {% endif %}
     </div>
   </div>
+
+{% block javascripts %}
+{{ block.super }}
+<script type="text/javascript">
+  $(document).ready(function(){
+    upload.init()
+  })
+</script>
+
+{% endblock %}
 
 {% endblock %}

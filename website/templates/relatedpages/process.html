@@ -6,7 +6,7 @@
     {% if procces_check %}
         <h2>{{ user.username }}: your files is processed successfully</h2>
         <h3>For access to your files click here:</h3>
-        <form action="{% url 'users:show_results' %}" method="post">
+        <form action="{% url 'users:process' %}" method="post">
           <input type="submit" name="" value="Download">
         </form>
 

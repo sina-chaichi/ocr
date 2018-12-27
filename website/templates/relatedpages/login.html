@@ -5,16 +5,16 @@
       <h1>Please Sign in</h1>
       <p></p>
       <p></p>
-      <p></p>
+      <p id = 'message-div'></p>
 
-        <form method="post" action="{% url 'users:user_login' %}">
+        <form id = 'signin' method="post" action="{% url 'users:user_login' %}">
           {% csrf_token %}
           {# A more "HTML" way of creating the login form#}
           <label for="email">Email:</label>
-          <input type="email" name="email" placeholder="Enter your mail">
+          <input id = 'email' type="email" name="email" placeholder="Enter your mail">
 
           <label for="password">Password</label>
-          <input type="password" name="password">
+          <input id = 'pass' type="password" name="password">
 
           <input type="submit" name="" value="Sign in">
 
@@ -22,4 +22,17 @@
 
     </div>
   </div>
+
+
+  {% block javascripts %}
+  {{ block.super }}
+  <script type="text/javascript">
+    $(document).ready(function(){
+      login.init()
+    })
+  </script>
+
+  {% endblock %}
+
+
 {% endblock %}

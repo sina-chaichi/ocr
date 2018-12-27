@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.models import User
 from users.models import UserProfileInfo
@@ -30,6 +30,7 @@ def process(request):
             doc_num = 0
             # image = [None]*len(doc_list)
             txt = [None]*len(doc_list)
+            file_names = []
             for doc in doc_list:
                 doc_process = doc.document.name
                 doc_path = str(doc_process)
@@ -41,7 +42,7 @@ def process(request):
 
                 # create txt file to ubsert processed image texts
 
-                file_name = '/home/sina/work/ocr/ocr/website/media/processed/text{}.txt'.format(current_order.id)
+                file_name = '/home/sina/work/ocr/ocr/website/media/processed/text{}-{}-{}.txt'.format(doc.id,current_user.id,current_order.id)
                 if not os.path.exists(os.path.dirname(file_name)):
                     try:
                         os.makedirs(os.path.dirname(file_name))
@@ -50,11 +51,16 @@ def process(request):
                             raise
                 with open(file_name, "w") as f:
                     f.write(txt[doc_num])
+                file_names.append(file_name)
                 print(doc_num)
                 doc_num = doc_num + 1
         current_order.is_finished = True
         current_order.save()
         procces_check = True
+        return JsonResponse({
+        'status':'ok',
+        'files' : file_names
+        })
     else:
         return HttpResponse('Here is no valid request')
     return render(request, 'relatedpages/process.html', {

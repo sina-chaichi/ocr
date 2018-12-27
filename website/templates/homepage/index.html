@@ -12,4 +12,15 @@
   </div>
 </div>
 
+
+{% block javascripts %}
+{{ block.super }}
+<script type="text/javascript">
+  $(document).ready(function(){
+    index.init()
+  })
+</script>
+
+{% endblock %}
+
 {% endblock %}
