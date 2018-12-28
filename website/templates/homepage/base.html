@@ -7,6 +7,7 @@
   </head>
   <body>
     {% csrf_token %}
+
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <ul class="nav navbar-nav">
@@ -19,14 +20,20 @@
           {% if user.is_authenticated %}
             <li><a href="{% url 'logout' %}">Sign out</a></li>
             <li><a href="{% url 'users:model_form_upload' %}">Upload Image</a></li>
+            <li><a href="{% url 'users:show' %}" method = 'POST'>Show My Images</a></li>
           {% else %}
             <li><a class="navbar-link" href="{% url 'users:user_login' %}">Sign in</a></li>
             <li><a class="navbar-link" href="{% url 'users:register' %}">Sign Up</a></li>
+
           {% endif %}
 
         </ul>
       </div>
     </nav>
+
+
+
+
     <div class="container">
     {% block body_block %}
     {% endblock %}

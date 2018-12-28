@@ -1,0 +1,36 @@
+{% extends "homepage/base.html" %}
+{% load staticfiles %}
+
+{% block body_block %}
+  <div class="container">
+    <div class="jumbotron">
+      {% if show_check %}
+        <h2>Your uploaded images are:</h2>
+        <p>salam {{ image_names }}</p>
+        <table id= 'imaage_table'>
+          {% for name in image_names %}
+            <tr>
+              <td>file name: {{ name }}</td>
+              <td></td>
+            </tr>
+          {% endfor %}
+        </table>
+      {% else %}
+        <h2>You have not uploaded any images!</h2>
+        <h2>Upload your image to process:</h2>
+        <button type="button" name="button"><a href="{% url 'users:model_form_upload' %}">Upload</a></button>
+      {% endif %}
+    </div>
+  </div>
+
+<!-- {% block javascripts %}
+{{ block.super }}
+<script type="text/javascript">
+  $(document).ready(function(){
+    upload.init()
+  })
+</script>
+
+{% endblock %} -->
+
+{% endblock %}
