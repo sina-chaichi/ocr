@@ -12,4 +12,5 @@ urlpatterns=[
     path('model_form_upload/',views.model_form_upload,name='model_form_upload'),
     path('process/',views_process.process,name='process'),
     path('show/',views_show.show,name='show'),
+    path('document-delete/',views_show.delete,name='delete_document'),
 ]

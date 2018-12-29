@@ -6,15 +6,20 @@
     <div class="jumbotron">
       {% if show_check %}
         <h2>Your uploaded images are:</h2>
-        <p>salam {{ image_names }}</p>
-        <table id= 'imaage_table'>
-          {% for name in image_names %}
-            <tr>
-              <td>file name: {{ name }}</td>
-              <td></td>
-            </tr>
+
+        <div class="row">
+          {% for document in documents %}
+          <div class="col-md-3">
+              <img style="height:200px; width:200px" src="/media/uploaded/{{document.doc_name}}" alt="">
+              <button type="button" name="button" document-id = '{{document.id}}' class = 'delete'>Delete</button>
+          </div>
           {% endfor %}
-        </table>
+        </div>
+        <br>
+        <br>
+        <br>
+        <button id = 'process' type="button" name="button">Process</button>
+
       {% else %}
         <h2>You have not uploaded any images!</h2>
         <h2>Upload your image to process:</h2>
@@ -23,14 +28,18 @@
     </div>
   </div>
 
-<!-- {% block javascripts %}
+
+{% block javascripts %}
 {{ block.super }}
+{% load static %}
+<script src="{% static 'js/show.js' %}"></script>
+
 <script type="text/javascript">
   $(document).ready(function(){
-    upload.init()
+    show.init()
   })
 </script>
 
-{% endblock %} -->
+{% endblock %}
 
 {% endblock %}

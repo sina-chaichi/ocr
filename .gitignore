@@ -1,5 +1,6 @@
 *.pyc
 *.jpg
 *.png
+*.txt
 ./website/media/uploaded
 ./website/media/processed
