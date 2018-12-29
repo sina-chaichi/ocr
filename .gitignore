@@ -2,5 +2,5 @@
 *.jpg
 *.png
 *.txt
-./website/media/uploaded
-./website/media/processed
+./website/media/uploaded/*
+./website/media/processed/*
