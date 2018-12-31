@@ -36,6 +36,9 @@
 
 {% block javascripts %}
 {{ block.super }}
+{% load static %}
+<script src="{% static 'js/upload.js' %}"></script>
+
 <script type="text/javascript">
   $(document).ready(function(){
     upload.init()
