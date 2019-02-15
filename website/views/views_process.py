@@ -39,7 +39,6 @@ def process(request):
                 txt[doc_num] = pytesseract.image_to_string(
                 image,
                 lang='eng')
-
                 # create txt file to ubsert processed image texts
 
                 file_name = '/home/sina/work/ocr/ocr/website/media/processed/text{}-{}-{}.txt'.format(doc.id,current_user.id,current_order.id)
